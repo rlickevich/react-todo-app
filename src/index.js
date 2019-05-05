@@ -1,34 +1,41 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const TodoList = () => {
+import AppHeader from './components/app-header';
+import SearchPanel from './components/search-panel';
+import TodoList from './components/todo-list';
+import ItemStatusFilter from './components/item-status-filter';
 
-    const items = ['Learn React', 'Build Awesome App'];
-
-    return (
-        <ul>
-            <li>Learn React</li>
-            <li>Build Awesome App</li>
-        </ul>
-    );
-};
-
-const AppHeader = () => {
-    return <h1>My Todo List</h1>
-};
-
-const SearchPanel = () => {
-    const searchText = 'Type here to search';
-
-    return <input placeholder={ searchText } />
-};
+import './index.css';
 
 const App = () => {
+
+    const todoData = [
+        {
+            id: 1,
+            label: 'Drink Coffee',
+            important: false
+        },
+        {
+            id: 2,
+            label: 'Make Awesome App',
+            important: true
+        },
+        {
+            id: 3,
+            label: 'Have a lunch',
+            important: false
+        }
+    ]
+
     return (
-        <div>
-            <AppHeader />
-            <SearchPanel />
-            <TodoList />
+        <div className="todo-app">
+            <AppHeader toDo={1} done={3} />
+            <div className="top-panel d-flex">
+                <SearchPanel />
+                <ItemStatusFilter />
+            </div>
+            <TodoList todos={todoData} />
         </div>
     );
 };
