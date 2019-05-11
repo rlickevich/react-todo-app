@@ -18,7 +18,7 @@ export default class TodoListItem extends Component {
           done: !done
         }
       });
-    }
+    };
 
     this.onMarkImportant = () => {
       this.setState(({ important }) => {
@@ -26,8 +26,8 @@ export default class TodoListItem extends Component {
           important: !important
         }
       });
-    }
-  }
+    };
+  };
 
 
   render() {
@@ -59,5 +59,5 @@ export default class TodoListItem extends Component {
         </button>
       </span>
     );
-  }
-}
+  };
+};
