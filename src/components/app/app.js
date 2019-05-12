@@ -13,13 +13,22 @@ export default class App extends Component {
     constructor() {
         super();
 
+        this.createTodoItem = (label) => {
+            return {
+                label,
+                important: false,
+                done: false,
+                id: this.maxId++
+            }
+        };
+
         this.maxId = 100;
 
         this.state = {
             todoData: [
-                {id: 1, label: 'Drink Coffee', important: false},
-                {id: 2, label: 'Make Awesome App', important: true},
-                {id: 3, label: 'Have a lunch', important: false}
+                this.createTodoItem('Drink Coffee'),
+                this.createTodoItem('Make Awesome App'),
+                this.createTodoItem('Have a lunch')
             ]
         };
 
@@ -38,11 +47,7 @@ export default class App extends Component {
         };
 
         this.addItem = (text) => {
-            const newItem = {
-                label: text,
-                important: false,
-                id: this.maxId++
-            };
+            const newItem = this.createTodoItem(text);
 
             this.setState(({ todoData }) => {
                 const newArray = [
@@ -55,6 +60,14 @@ export default class App extends Component {
                 };
             });
         };
+
+        this.onToggleImportant = (id) => {
+            console.log('toggle important', id);
+        };
+
+        this.onToggleDone = (id) => {
+            console.log('toggle done', id);
+        };
     };
 
     render() {
@@ -65,7 +78,11 @@ export default class App extends Component {
                     <SearchPanel />
                     <ItemStatusFilter />
                 </div>
-                <TodoList todos={ this.state.todoData } onDeleted={ this.deleteItem } />
+                <TodoList
+                    todos={ this.state.todoData }
+                    onDeleted={ this.deleteItem }
+                    onToggleImportant={ this.onToggleImportant }
+                    onToggleDone={ this.onToggleDone } />
                 <TodoAddItem onItemAdded={ this.addItem } />
             </div>
         );
