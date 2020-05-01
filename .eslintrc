@@ -4,7 +4,7 @@
     "es6": true
   },
   "extends": [
-    "eslint:recommended",
+    "react-app",
     "plugin:prettier/recommended",
     "plugin:react/recommended"
   ],
@@ -13,16 +13,14 @@
       "error",
       {
         "endOfLine": "auto",
-        "singleQuote": true
+        "singleQuote": true,
+        "tabWidth": 2,
+        "useTabs": false,
+        "semi": true,
+        "trailingComma": "all"
       }
     ],
-    "react/prop-types": 0
-  },
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    },
-    "ecmaVersion": 2018,
-    "sourceType": "module"
+    "react/prop-types": 0,
+    "no-console": 1
   }
 }
